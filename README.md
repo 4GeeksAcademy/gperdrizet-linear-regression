@@ -1,89 +1,127 @@
-# Data Science Project Boilerplate
+# Linear Regression: Health Insurance Cost Prediction
 
-This boilerplate is designed to kickstart data science projects by providing a basic setup for database connections, data processing, and machine learning model development. It includes a structured folder organization for your datasets and a set of pre-defined Python packages necessary for most data science tasks.
+This repository contains a data science bootcamp assignment focused on linear regression using real-world health insurance data. Students will learn to:
 
-## Structure
+- Build and evaluate linear regression models for cost prediction
+- Perform comprehensive exploratory data analysis (EDA)
+- Handle mixed data types (categorical and numerical features)
+- Apply feature engineering techniques including encoding and scaling
+- Optimize models through feature selection and data transformations
+- Compare baseline, single, and split model performance approaches
 
-The project is organized as follows:
+## Dataset
 
-- `app.py` - The main Python script that you run for your project.
-- `explore.py` - A notebook to explore data, play around, visualize, clean, etc. Ideally the notebook code should be migrated to the app.py when moving to production.
-- `utils.py` - This file contains utility code for operations like database connections.
-- `requirements.txt` - This file contains the list of necessary python packages.
-- `models/` - This directory should contain your SQLAlchemy model classes.
-- `data/` - This directory contains the following subdirectories:
-  - `interin/` - For intermediate data that has been transformed.
-  - `processed/` - For the final data to be used for modeling.
-  - `raw/` - For raw data without any processing.
- 
-    
-## Setup
+The assignment uses a health insurance cost dataset containing patient information and associated medical charges. The target variable is `charges` - the medical insurance cost for each patient. Features include demographic information (age, sex, region), health indicators (BMI, smoking status), and family information (number of children).
 
-**Prerequisites**
+## Repository Structure
 
-Make sure you have Python 3.11+ installed on your. You will also need pip for installing the Python packages.
+- `notebooks/mvp.ipynb`: The main assignment notebook for students to complete.
+- `notebooks/solution.ipynb`: The instructor's full solution for reference.
+- `data/`: Contains raw, interim, and processed data folders (ignored by git).
+- `models/`: Directory for saving trained models (ignored by git).
+- `requirements.txt`: List of required Python packages.
 
-**Installation**
+## Getting Started
 
-Clone the project repository to your local machine.
+To complete this assignment, you can choose between two options: using GitHub Codespaces (recommended) or setting up a local development environment. Both methods will allow you to run the Jupyter notebook and complete the assignment.
 
-Navigate to the project directory and install the required Python packages:
+### Option 1: GitHub Codespaces (Recommended)
 
-```bash
-pip install -r requirements.txt
-```
+1. **Fork the Repository**
+   - Click the "Fork" button on the top right of the [GitHub repository page](https://github.com/4GeeksAcademy/gperdrizet-linear-regression)
+   - This creates your own copy under your GitHub account
 
-**Create a database (if needed)**
+2. **Create a GitHub Codespace**
+   - On your forked repository, click the "Code" button
+   - Select "Create codespace on main" 
+   - Wait for the environment to load (dependencies are pre-installed)
 
-Create a new database within the Postgres engine by customizing and executing the following command: `$ createdb -h localhost -U <username> <db_name>`
-Connect to the Postgres engine to use your database, manipulate tables and data: `$ psql -h localhost -U <username> <db_name>`
-NOTE: Remember to check the ./.env file information to get the username and db_name.
+3. **Start Working**
+   - Open `notebooks/mvp.ipynb` in the Jupyter interface
+   - Follow the step-by-step instructions in the notebook
 
-Once you are inside PSQL you will be able to create tables, make queries, insert, update or delete data and much more!
+### Option 2: Local Development
 
-**Environment Variables**
+1. **Fork and Clone**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/gperdrizet-linear-regression.git
+   cd gperdrizet-linear-regression
+   ```
 
-Create a .env file in the project root directory to store your environment variables, such as your database connection string:
+2. **Set Up Environment**
+   ```bash
+   # Create virtual environment (recommended)
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Install dependencies
+   pip install -r requirements.txt
+   ```
 
-```makefile
-DATABASE_URL="your_database_connection_url_here"
-```
+3. **Launch Jupyter**
+   ```bash
+   jupyter notebook notebooks/mvp.ipynb
+   ```
 
-## Running the Application
+## Assignment Overview
 
-To run the application, execute the app.py script from the root of the project directory:
+The `mvp.ipynb` notebook guides you through:
 
-```bash
-python app.py
-```
+1. **Data Loading & Inspection** - Load and explore the health insurance dataset
+2. **Exploratory Data Analysis (EDA)** - Analyze target variable and feature distributions, establish baseline model performance
+3. **Feature Engineering** - Handle categorical variables, apply scaling, and prepare data for modeling
+4. **Linear Model Training** - Build and evaluate linear regression models
+5. **Model Optimization** - Explore advanced techniques like split modeling and feature transformations
+6. **Final Evaluation** - Compare model performance and analyze results
 
-## Adding Models
+### Key Concepts Covered
 
-To add SQLAlchemy model classes, create new Python script files inside the models/ directory. These classes should be defined according to your database schema.
+- **Baseline Model Performance**: Understanding simple prediction benchmarks
+- **Feature Engineering**: One-hot encoding, standardization, and feature transformations
+- **Model Evaluation**: RMSE calculation and residual analysis
+- **Advanced Modeling**: Split model approaches based on categorical features (smoker vs. non-smoker)
+- **Data Visualization**: Using matplotlib and seaborn for EDA and model evaluation
 
-Example model definition (`models/example_model.py`):
+## Working on the Assignment
 
-```py
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+- Complete the sections marked with `# Your code here...`
+- Run cells sequentially to maintain proper data flow
+- Experiment with different feature engineering approaches
+- Document your observations and findings in markdown cells
 
-Base = declarative_base()
+## Requirements
 
-class ExampleModel(Base):
-    __tablename__ = 'example_table'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
+The environment is pre-configured with the following packages (see [`requirements.txt`](requirements.txt)):
 
-```
+- pandas - Data manipulation and analysis
+- matplotlib - Basic plotting and visualization
+- seaborn - Statistical data visualization
+- scikit-learn - Machine learning library
+- numpy - Numerical computing
+- scipy - Scientific computing
 
-## Working with Data
+## Instructor Solution
 
-You can place your raw datasets in the data/raw directory, intermediate datasets in data/interim, and the processed datasets ready for analysis in data/processed.
+**For Students**: Try to complete the assignment on your own first before looking at the solution. The learning happens in the struggle!
 
-To process data, you can modify the app.py script to include your data processing steps, utilizing pandas for data manipulation and analysis.
+If you need guidance or want to check your work, refer to the instructor's solution in [`notebooks/solution.ipynb`](notebooks/solution.ipynb).
 
-## Contributors
+## Troubleshooting
 
-This template was built as part of the 4Geeks Academy [Data Science and Machine Learning Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about [4Geeks Academy's BootCamp programs](https://4geeksacademy.com/us/programs) here.
+### Common Issues
 
-Other templates and resources like this can be found on the school GitHub page.
+1. **Import Errors**: Ensure all packages from `requirements.txt` are installed
+2. **Kernel Issues**: Restart the kernel if variables seem undefined
+
+### Getting Help
+
+- Review the instructor solution in `notebooks/solution.ipynb` if you're stuck
+- Check the scikit-learn documentation for specific functions
+- Pay attention to the data preparation steps, as proper feature engineering is crucial
+
+## Additional Resources
+
+- [Scikit-learn Linear Models](https://scikit-learn.org/stable/modules/linear_model.html)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- [Matplotlib Tutorials](https://matplotlib.org/stable/tutorials/index.html)
+- [Seaborn Tutorial](https://seaborn.pydata.org/tutorial.html)
