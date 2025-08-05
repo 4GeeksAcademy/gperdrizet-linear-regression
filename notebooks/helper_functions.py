@@ -22,6 +22,7 @@ def get_level_counts(data_df: pd.DataFrame, features: list) -> pd.DataFrame:
 
     return pd.concat(dfs, axis=0)
 
+
 def encode_features(data_df: pd.DataFrame, encoder: OneHotEncoder, nominal_features: list) -> pd.DataFrame:
     '''Encodes nominal features in the dataframe using the provided encoder.'''
 
@@ -32,44 +33,3 @@ def encode_features(data_df: pd.DataFrame, encoder: OneHotEncoder, nominal_featu
     )
 
     return pd.concat([data_df.drop(columns=nominal_features), encoded_df], axis=1)
-
-
-class SplitModel:
-    def __init__(self, training_df, testing_df):
-        self.smoker_training_df = training_df[training_df['smoker_yes'] == 1].copy()
-        self.nonsmoker_training_df = training_df[training_df['smoker_yes'] == 0].copy()
-        self.smoker_training_df.drop('smoker_yes', axis=1, inplace=True)
-        self.nonsmoker_training_df.drop('smoker_yes', axis=1, inplace=True)
-
-        self.smoker_testing_df = testing_df[testing_df['smoker_yes'] == 1].copy()
-        self.nonsmoker_testing_df = testing_df[testing_df['smoker_yes'] == 0].copy()
-        self.smoker_testing_df.drop('smoker_yes', axis=1, inplace=True)
-        self.nonsmoker_testing_df.drop('smoker_yes', axis=1, inplace=True)
-        
-        self.smoker_model = LinearRegression()
-        self.nonsmoker_model = LinearRegression()
-        self.smoker_predictions = None
-        self.nonsmoker_predictions = None
-
-    def fit(self):
-        # Fit the model on the training data
-
-        self.smoker_model.fit(self.smoker_training_df.drop('charges', axis=1), self.smoker_training_df['charges'])
-        self.nonsmoker_model.fit(self.nonsmoker_training_df.drop('charges', axis=1), self.nonsmoker_training_df['charges'])
-
-    def predict(self):
-        # Make predictions on the testing data
-
-        self.smoker_predictions = self.smoker_model.predict(self.smoker_testing_df.drop('charges', axis=1))
-        self.nonsmoker_predictions = self.nonsmoker_model.predict(self.nonsmoker_testing_df.drop('charges', axis=1))
-
-    def evaluate(self):
-        # Evaluate the model performance
-
-        predictions = self.smoker_predictions.tolist() + self.nonsmoker_predictions.tolist()
-        labels = self.smoker_testing_df['charges'].tolist() + self.nonsmoker_testing_df['charges'].tolist()
-
-        rmse = root_mean_squared_error(labels, predictions)
-        rsq = r2_score(labels, predictions)
-        
-        return rmse, rsq
