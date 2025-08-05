@@ -102,7 +102,7 @@ The environment is pre-configured with the following packages (see [`requirement
 
 ## Instructor Solution
 
-⚠️ **For Students**: Try to complete the assignment on your own first before looking at the solution. The learning happens in the struggle!
+**For Students**: Try to complete the assignment on your own first before looking at the solution. The learning happens in the struggle!
 
 If you need guidance or want to check your work, refer to the instructor's solution in [`notebooks/solution.ipynb`](notebooks/solution.ipynb).
 
@@ -112,7 +112,6 @@ If you need guidance or want to check your work, refer to the instructor's solut
 
 1. **Import Errors**: Ensure all packages from `requirements.txt` are installed
 2. **Kernel Issues**: Restart the kernel if variables seem undefined
-3. **Data Loading Issues**: Verify internet connection for loading the CSV from the URL
 
 ### Getting Help
 
@@ -126,14 +125,3 @@ If you need guidance or want to check your work, refer to the instructor's solut
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Matplotlib Tutorials](https://matplotlib.org/stable/tutorials/index.html)
 - [Seaborn Tutorial](https://seaborn.pydata.org/tutorial.html)
-
-## Support
-
-If you encounter issues or have questions:
-1. Review the assignment instructions carefully
-2. Check the troubleshooting section above
-3. Consult with your instructor or teaching assistants
-
-## License
-
-This assignment is for educational purposes.
