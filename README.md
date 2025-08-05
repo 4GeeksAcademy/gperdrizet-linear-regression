@@ -1,5 +1,7 @@
 # Linear Regression: Health Insurance Cost Prediction
 
+[![Codespace Prebuild](https://github.com/4GeeksAcademy/gperdrizet-linear-regression/actions/workflows/codespaces/create_codespaces_prebuilds/badge.svg)](https://github.com/4GeeksAcademy/gperdrizet-linear-regression/actions/workflows/codespaces/create_codespaces_prebuilds)
+
 This repository contains a data science bootcamp assignment focused on linear regression using real-world health insurance data. Students will learn to:
 
 - Build and evaluate linear regression models for cost prediction
